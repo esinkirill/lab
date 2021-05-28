@@ -1,15 +1,16 @@
 #include <iostream>
 #include <fstream>
 #include "soldier.hpp"
+#include "inter.hpp"
 using namespace std;
 int main(int argc, char *argv[]){  
   if (argc<=1){
     cout<<"Name not specified"<<endl;
     return 0;
   }
-  
-  Soldier* a=read(argv[1]);
-  int n=getcount(argv[1]);
+  Inter in;
+  Soldier* a=in.read(argv[1]);
+  int n=in.getcount(argv[1]);
   int k=1;
   while (k!=0){
     cout<<"1.Add soldier"<<endl;
@@ -23,24 +24,24 @@ int main(int argc, char *argv[]){
     cin>>k;
     switch (k){
       case 1:
-        a=add(a,n);
+        a=in.add(a,n);
         n++;
         break;
       case 2:
-        print(a,n);
+        in.print(a,n);
         break;
       case 3:
-        a=del(a,n);
+        a=in.del(a,n);
         n--;
         break;
       case 4:
-        searchname(a, n);
+        in.searchname(a, n);
         break;
       case 5:
-        a=learn(a, n);
+        a=in.learn(a, n);
         break;
       default:
-        input(a, argv[1], n);
+        in.input(a, argv[1], n);
         n=0;
         break;
 
